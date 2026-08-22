@@ -1,0 +1,20 @@
+from threading import Thread
+ counter=0;
+ counter_lock = lock # יצירת מנעול ושימוש במיוטקס
+def increment_counter():
+    for i in range (100000):
+        global counter++
+
+def decrement_counter():
+    for i in range (100000):
+        global counter--
+
+thread1 = Thread(target = increment_counter)
+thread2 = Thread(target = ecrement_counter)
+thread1.start() # מאתחל את הטרד
+thread2.start()
+
+thread1.join()# מחכה במיין שכל הטרדים האחרים יסיימו לפני שממדיכים בקוד ומדפיסים את התוצאה
+thread2.join()
+
+print("the final value is: ",counter)
