@@ -1,0 +1,13 @@
+from pathlib import Path
+
+folder_path = input("enter dictionary Path: ")# מקבלת את שם הקובץ כסטרינג
+folder = Path(folder_path)#   לוקחת את הסטרינג והופכת אותו לפאט' שאפשר אשכרה לעבוד איתו בקבצים
+
+def list_files(current_folder):
+    for file in current_folder.iterdir():# עושה לולאה שעוברת על כל רכיב בתוך התיקייה 
+        if file.is_file():# אם הקובץ הוא אכן קובץ ולא תיקייה
+            print(file.name)# תדפיס את שם הקובץ בלבד ולא את כל הפאט'
+        else:
+            list_files(file)
+
+list_files(folder)
